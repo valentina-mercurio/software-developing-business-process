@@ -1,0 +1,1824 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specificationSet xmlns="http://www.yawlfoundation.org/yawlschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="4.0" xsi:schemaLocation="http://www.yawlfoundation.org/yawlschema http://www.yawlfoundation.org/yawlschema/YAWL_Schema4.0.xsd">
+  <specification uri="Progetto_Madeo_Mercurio">
+    <documentation>No description provided</documentation>
+    <metaData>
+      <creator>Valentina Mercurio</creator>
+      <description>No description provided</description>
+      <coverage>5.0.805</coverage>
+      <version>0.10</version>
+      <persistent>false</persistent>
+      <identifier>UID_eaa23da9-ca7e-4fa4-9f19-b3c91b575e89</identifier>
+    </metaData>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+    <decomposition id="Net" isRootNet="true" xsi:type="NetFactsType">
+      <localVariable>
+        <index>0</index>
+        <name>Nome_Cliente</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>a string</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>1</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>a string</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>2</index>
+        <name>ID_Cliente</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>3</index>
+        <name>ID_Richiesta</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>4</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>a string</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>5</index>
+        <name>Sviluppo</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>false</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>6</index>
+        <name>CompletezzaDati</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>false</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>7</index>
+        <name>RicontattoCliente</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>false</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>8</index>
+        <name>Correzione_Problematica</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>false</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>9</index>
+        <name>Controllo</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>false</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>10</index>
+        <name>Descrizione_Obiettivo</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>a string</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>11</index>
+        <name>Codice_Completato</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>false</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>12</index>
+        <name>Numero_Unita</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>13</index>
+        <name>Unita_Corretta</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>false</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>14</index>
+        <name>Consegna</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>false</initialValue>
+      </localVariable>
+      <processControlElements>
+        <inputCondition id="InputCondition">
+          <flowsInto>
+            <nextElementRef id="A_ContattoColRichiedente" />
+          </flowsInto>
+        </inputCondition>
+        <task id="A_ContattoColRichiedente">
+          <name>A_ContattoColRichiedente</name>
+          <flowsInto>
+            <nextElementRef id="B_VerificaSpecifiche" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/A_ContattoColRichiedente/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/A_ContattoColRichiedente/ID_Richiesta/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Sviluppo&gt;{/A_ContattoColRichiedente/Sviluppo/text()}&lt;/Sviluppo&gt;" />
+              <mapsTo>Sviluppo</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Cliente&gt;{/A_ContattoColRichiedente/Nome_Cliente/text()}&lt;/Nome_Cliente&gt;" />
+              <mapsTo>Nome_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/A_ContattoColRichiedente/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-8cb5993d-875f-473f-a7c1-8d9250d9e39c</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="A_ContattoColRichiedente" />
+        </task>
+        <task id="B_VerificaSpecifiche">
+          <name>B_VerificaSpecifiche</name>
+          <flowsInto>
+            <nextElementRef id="a_ValutazioneCompletezzaSpecifiche" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Descrizione_Obiettivo&gt;{/Net/Descrizione_Obiettivo/text()}&lt;/Descrizione_Obiettivo&gt;" />
+              <mapsTo>Descrizione_Obiettivo</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/Net/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Richiesta/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E-mail&gt;{/Net/E-mail/text()}&lt;/E-mail&gt;" />
+              <mapsTo>E-mail</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Cliente&gt;{/Net/Nome_Cliente/text()}&lt;/Nome_Cliente&gt;" />
+              <mapsTo>Nome_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Sviluppo&gt;{/Net/Sviluppo/text()}&lt;/Sviluppo&gt;" />
+              <mapsTo>Sviluppo</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;CompletezzaDati&gt;{/B_VerificaSpecifiche/CompletezzaDati/text()}&lt;/CompletezzaDati&gt;" />
+              <mapsTo>CompletezzaDati</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-8cb5993d-875f-473f-a7c1-8d9250d9e39c</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="system">
+              <allocator>
+                <name>RandomChoice</name>
+              </allocator>
+            </allocate>
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="B_VerificaSpecifiche" />
+        </task>
+        <task id="a_ValutazioneCompletezzaSpecifiche">
+          <name>a_ValutazioneCompletezzaSpecifiche</name>
+          <flowsInto>
+            <nextElementRef id="A_ContattoColRichiedente" />
+            <predicate ordering="0">/Net/RicontattoCliente/text()='true'</predicate>
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="C_IndividuazioneArea" />
+            <isDefaultFlow />
+          </flowsInto>
+          <join code="xor" />
+          <split code="xor" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Descrizione_Obiettivo&gt;{/Net/Descrizione_Obiettivo/text()}&lt;/Descrizione_Obiettivo&gt;" />
+              <mapsTo>Descrizione_Obiettivo</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Richiesta/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Completezza_Dati&gt;{/Net/Sviluppo/text()}&lt;/Completezza_Dati&gt;" />
+              <mapsTo>Completezza_Dati</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E-mail&gt;{/Net/E-mail/text()}&lt;/E-mail&gt;" />
+              <mapsTo>E-mail</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Cliente&gt;{/Net/Nome_Cliente/text()}&lt;/Nome_Cliente&gt;" />
+              <mapsTo>Nome_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Sviluppo&gt;{/Net/Sviluppo/text()}&lt;/Sviluppo&gt;" />
+              <mapsTo>Sviluppo</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Prodotto&gt;{/Net/Nome_Cliente/text()}&lt;/Nome_Prodotto&gt;" />
+              <mapsTo>Nome_Prodotto</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;RicontattoCliente&gt;{/a_ValutazioneCompletezzaSpecifiche/RicontattoCliente/text()}&lt;/RicontattoCliente&gt;" />
+              <mapsTo>RicontattoCliente</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-8cb5993d-875f-473f-a7c1-8d9250d9e39c</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="a_ValutazioneCompletezzaSpecifiche" />
+        </task>
+        <task id="C_IndividuazioneArea">
+          <name>C_IndividuazioneArea</name>
+          <flowsInto>
+            <nextElementRef id="b_AssegnazioneRichiestaArea" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Descrizione_Obiettivo&gt;{/Net/Descrizione_Obiettivo/text()}&lt;/Descrizione_Obiettivo&gt;" />
+              <mapsTo>Descrizione_Obiettivo</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/Net/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Cliente&gt;{/Net/Nome_Cliente/text()}&lt;/Nome_Cliente&gt;" />
+              <mapsTo>Nome_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Sviluppo&gt;{/Net/Sviluppo/text()}&lt;/Sviluppo&gt;" />
+              <mapsTo>Sviluppo</mapsTo>
+            </mapping>
+          </startingMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-8cb5993d-875f-473f-a7c1-8d9250d9e39c</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="C_IndividuazioneArea" />
+        </task>
+        <task id="b_AssegnazioneRichiestaArea">
+          <name>b_AssegnazioneRichiestaArea</name>
+          <flowsInto>
+            <nextElementRef id="G_ScritturaCodice" />
+            <predicate ordering="0">/Net/Sviluppo/text()='true'</predicate>
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="D_IndividuazioneEventualiProblematiche" />
+            <isDefaultFlow />
+          </flowsInto>
+          <join code="xor" />
+          <split code="xor" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Descrizione_Obiettivo&gt;{/Net/Descrizione_Obiettivo/text()}&lt;/Descrizione_Obiettivo&gt;" />
+              <mapsTo>Descrizione_Obiettivo</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/Net/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Richiesta/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E_mail&gt;{/Net/Nome_Cliente/text()}&lt;/E_mail&gt;" />
+              <mapsTo>E_mail</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;Sviluppo&gt;{/b_AssegnazioneRichiestaArea/Sviluppo/text()}&lt;/Sviluppo&gt;" />
+              <mapsTo>Sviluppo</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-8cb5993d-875f-473f-a7c1-8d9250d9e39c</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="b_AssegnazioneRichiestaArea" />
+        </task>
+        <task id="D_IndividuazioneEventualiProblematiche">
+          <name>D_IndividuazioneEventualiProblematiche</name>
+          <flowsInto>
+            <nextElementRef id="E_CorrezioneProblematica" />
+          </flowsInto>
+          <join code="and" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Descrizione_Obiettivo&gt;{/Net/Descrizione_Obiettivo/text()}&lt;/Descrizione_Obiettivo&gt;" />
+              <mapsTo>Descrizione_Obiettivo</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/Net/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Richiesta/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E-mail&gt;{/Net/E-mail/text()}&lt;/E-mail&gt;" />
+              <mapsTo>E-mail</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Sviluppo&gt;{/Net/Sviluppo/text()}&lt;/Sviluppo&gt;" />
+              <mapsTo>Sviluppo</mapsTo>
+            </mapping>
+          </startingMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-f2dfa6c6-4a9a-4bde-a468-2a1109c74396</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="D_IndividuazioneEventualiProblematiche" />
+        </task>
+        <task id="G_ScritturaCodice">
+          <name>G_ScritturaCodice</name>
+          <flowsInto>
+            <nextElementRef id="H_TestSingoleUnita" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Descrizione_Obiettivo&gt;{/Net/Descrizione_Obiettivo/text()}&lt;/Descrizione_Obiettivo&gt;" />
+              <mapsTo>Descrizione_Obiettivo</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/Net/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Richiesta/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E-mail&gt;{/Net/E-mail/text()}&lt;/E-mail&gt;" />
+              <mapsTo>E-mail</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;Codice_Completato&gt;{/G_ScritturaCodice/Codice_Completato/text()}&lt;/Codice_Completato&gt;" />
+              <mapsTo>Codice_Completato</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Numero_Unita&gt;{/G_ScritturaCodice/Numero_Unita/text()}&lt;/Numero_Unita&gt;" />
+              <mapsTo>Numero_Unita</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-984e7f19-67c2-40fd-ab0c-046069b42264</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="G_ScritturaCodice" />
+        </task>
+        <task id="E_CorrezioneProblematica">
+          <name>E_CorrezioneProblematica</name>
+          <flowsInto>
+            <nextElementRef id="F_ControlloSoftware" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Descrizione_Obiettivo&gt;{/Net/Descrizione_Obiettivo/text()}&lt;/Descrizione_Obiettivo&gt;" />
+              <mapsTo>Descrizione_Obiettivo</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/Net/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Cliente/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E-mail&gt;{/Net/E-mail/text()}&lt;/E-mail&gt;" />
+              <mapsTo>E-mail</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;Correzione_Problematica&gt;{/E_CorrezioneProblematica/Correzione_Problematica/text()}&lt;/Correzione_Problematica&gt;" />
+              <mapsTo>Correzione_Problematica</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-f2dfa6c6-4a9a-4bde-a468-2a1109c74396</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="E_CorrezioneProblematica" />
+        </task>
+        <task id="H_TestSingoleUnita">
+          <name>H_TestSingoleUnita</name>
+          <flowsInto>
+            <nextElementRef id="c_VerificaEsitoControllo" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/Net/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Richiesta/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E-mail&gt;{/Net/E-mail/text()}&lt;/E-mail&gt;" />
+              <mapsTo>E-mail</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Numero_Unita&gt;{/Net/Numero_Unita/text()}&lt;/Numero_Unita&gt;" />
+              <mapsTo>Numero_Unita</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Codice_Completato&gt;{/Net/Codice_Completato/text()}&lt;/Codice_Completato&gt;" />
+              <mapsTo>Codice_Completato</mapsTo>
+            </mapping>
+          </startingMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-984e7f19-67c2-40fd-ab0c-046069b42264</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="H_TestSingoleUnita" />
+        </task>
+        <task id="F_ControlloSoftware">
+          <name>F_ControlloSoftware</name>
+          <flowsInto>
+            <nextElementRef id="M_Consegna" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Correzione_Problematica&gt;{/Net/Correzione_Problematica/text()}&lt;/Correzione_Problematica&gt;" />
+              <mapsTo>Correzione_Problematica</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/Net/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Cliente/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E-mail&gt;{/Net/E-mail/text()}&lt;/E-mail&gt;" />
+              <mapsTo>E-mail</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;Controllo&gt;{/F_ControlloSoftware/Controllo/text()}&lt;/Controllo&gt;" />
+              <mapsTo>Controllo</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-f2dfa6c6-4a9a-4bde-a468-2a1109c74396</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="F_ControlloSoftware" />
+        </task>
+        <task id="c_VerificaEsitoControllo">
+          <name>c_VerificaEsitoControllo</name>
+          <flowsInto>
+            <nextElementRef id="L_ControlloGeneraleSoftware" />
+            <predicate ordering="0">/Net/Unita_Corretta/text()='true'</predicate>
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="I_RisoluzioneProblematicheUnita" />
+            <isDefaultFlow />
+          </flowsInto>
+          <join code="xor" />
+          <split code="xor" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Numero_Unita&gt;{/Net/Numero_Unita/text()}&lt;/Numero_Unita&gt;" />
+              <mapsTo>Numero_Unita</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/Net/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Richiesta/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E-mail&gt;{/Net/E-mail/text()}&lt;/E-mail&gt;" />
+              <mapsTo>E-mail</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;Sviluppo&gt;{/c_VerificaEsitoControllo/Unita_Corretta/text()}&lt;/Sviluppo&gt;" />
+              <mapsTo>Sviluppo</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-984e7f19-67c2-40fd-ab0c-046069b42264</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="c_VerificaEsitoControllo" />
+        </task>
+        <task id="I_RisoluzioneProblematicheUnita">
+          <name>I_RisoluzioneProblematicheUnita</name>
+          <flowsInto>
+            <nextElementRef id="H_TestSingoleUnita" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/Net/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Unita_Corretta&gt;{/Net/Unita_Corretta/text()}&lt;/Unita_Corretta&gt;" />
+              <mapsTo>Unita_Corretta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Richiesta/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E-mail&gt;{/Net/E-mail/text()}&lt;/E-mail&gt;" />
+              <mapsTo>E-mail</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;Unita_Corretta&gt;{/I_RisoluzioneProblematicheUnita/Unita_Corretta/text()}&lt;/Unita_Corretta&gt;" />
+              <mapsTo>Unita_Corretta</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-984e7f19-67c2-40fd-ab0c-046069b42264</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="I_RisoluzioneProblematicheUnita" />
+        </task>
+        <task id="L_ControlloGeneraleSoftware">
+          <name>L_ControlloGeneraleSoftware</name>
+          <flowsInto>
+            <nextElementRef id="M_Consegna" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Nome_Progetto&gt;{/Net/Nome_Progetto/text()}&lt;/Nome_Progetto&gt;" />
+              <mapsTo>Nome_Progetto</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Richiesta/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E-mail&gt;{/Net/E-mail/text()}&lt;/E-mail&gt;" />
+              <mapsTo>E-mail</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;Controllo&gt;{/L_ControlloGeneraleSoftware/Controllo/text()}&lt;/Controllo&gt;" />
+              <mapsTo>Controllo</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-984e7f19-67c2-40fd-ab0c-046069b42264</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="L_ControlloGeneraleSoftware" />
+        </task>
+        <task id="M_Consegna">
+          <name>M_Consegna</name>
+          <flowsInto>
+            <nextElementRef id="OutputCondition" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;ID_Richiesta&gt;{/Net/ID_Richiesta/text()}&lt;/ID_Richiesta&gt;" />
+              <mapsTo>ID_Richiesta</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;E-mail&gt;{/Net/E-mail/text()}&lt;/E-mail&gt;" />
+              <mapsTo>E-mail</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ID_Cliente&gt;{/Net/ID_Cliente/text()}&lt;/ID_Cliente&gt;" />
+              <mapsTo>ID_Cliente</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Nome_Cliente&gt;{/Net/Nome_Cliente/text()}&lt;/Nome_Cliente&gt;" />
+              <mapsTo>Nome_Cliente</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;Consegna&gt;{/M_Consegna/Consegna/text()}&lt;/Consegna&gt;" />
+              <mapsTo>Consegna</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <role>RO-8cb5993d-875f-473f-a7c1-8d9250d9e39c</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="M_Consegna" />
+        </task>
+        <outputCondition id="OutputCondition" />
+      </processControlElements>
+    </decomposition>
+    <decomposition id="A_ContattoColRichiedente" xsi:type="WebServiceGatewayFactsType">
+      <outputParam>
+        <index>0</index>
+        <name>Nome_Cliente</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <outputParam>
+        <index>1</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <outputParam>
+        <index>2</index>
+        <name>ID_Cliente</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <outputParam>
+        <index>3</index>
+        <name>ID_Richiesta</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <outputParam>
+        <index>4</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <outputParam>
+        <index>5</index>
+        <name>Sviluppo</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue>false</defaultValue>
+      </outputParam>
+      <outputParam>
+        <index>6</index>
+        <name>Descrizione_Obiettivo</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="B_VerificaSpecifiche" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Cliente</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Cliente</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>ID_Richiesta</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>5</index>
+        <name>Sviluppo</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>7</index>
+        <name>Descrizione_Obiettivo</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>6</index>
+        <name>CompletezzaDati</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="C_IndividuazioneArea" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Cliente</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Cliente</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>Descrizione_Obiettivo</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>Sviluppo</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="D_IndividuazioneEventualiProblematiche" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>ID_Cliente</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>ID_Richiesta</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>Sviluppo</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>5</index>
+        <name>Descrizione_Obiettivo</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="E_CorrezioneProblematica" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>ID_Cliente</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Richiesta</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>Descrizione_Obiettivo</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>5</index>
+        <name>Correzione_Problematica</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue>false</defaultValue>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="F_ControlloSoftware" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>ID_Cliente</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Richiesta</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>Correzione_Problematica</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>5</index>
+        <name>Controllo</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue>false</defaultValue>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="G_ScritturaCodice" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>ID_Cliente</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Richiesta</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>Descrizione_Obiettivo</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>5</index>
+        <name>Codice_Completato</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue>false</defaultValue>
+      </outputParam>
+      <outputParam>
+        <index>6</index>
+        <name>Numero_Unita</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="H_TestSingoleUnita" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>ID_Cliente</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Richiesta</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>Numero_Unita</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>5</index>
+        <name>Codice_Completato</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="I_RisoluzioneProblematicheUnita" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>ID_Cliente</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Richiesta</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>Unita_Corretta</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>4</index>
+        <name>Unita_Corretta</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="L_ControlloGeneraleSoftware" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>ID_Cliente</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Richiesta</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>4</index>
+        <name>Controllo</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="M_Consegna" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Cliente</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>ID_Cliente</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Richiesta</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>4</index>
+        <name>Consegna</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue>false</defaultValue>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="a_ValutazioneCompletezzaSpecifiche" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Cliente</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>Nome_Prodotto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Cliente</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>ID_Richiesta</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>5</index>
+        <name>Sviluppo</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>6</index>
+        <name>Completezza_Dati</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>8</index>
+        <name>Descrizione_Obiettivo</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>7</index>
+        <name>RicontattoCliente</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="b_AssegnazioneRichiestaArea" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>ID_Richiesta</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Cliente</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>E_mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>5</index>
+        <name>Descrizione_Obiettivo</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>4</index>
+        <name>Sviluppo</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue>false</defaultValue>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="c_VerificaEsitoControllo" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <index>0</index>
+        <name>Nome_Progetto</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>ID_Cliente</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>ID_Richiesta</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>E-mail</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>Numero_Unita</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>5</index>
+        <name>Unita_Corretta</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue>false</defaultValue>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+  </specification>
+  <layout>
+    <locale language="en" country="US"/>
+    <specification id="Progetto_Madeo_Mercurio">
+      <size w="103" h="28"/>
+      <net id="Net">
+        <bounds x="-282" y="-99" w="1583" h="533"/>
+        <frame x="0" y="0" w="1133" h="452"/>
+        <viewport x="0" y="0" w="1133" h="452"/>
+        <scale>0.961816406249969</scale>
+        <vertex id="OutputCondition">
+          <attributes>
+            <bounds x="1,592" y="277" w="33" h="33"/>
+          </attributes>
+        </vertex>
+        <vertex id="InputCondition">
+          <attributes>
+            <bounds x="4" y="280" w="32" h="32"/>
+          </attributes>
+        </vertex>
+        <container id="a_ValutazioneCompletezzaSpecifiche">
+          <vertex>
+            <attributes>
+              <bounds x="454" y="280" w="33" h="33"/>
+              <backgroundColor>-3394561</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="367" y="313" w="220" h="20"/>
+            </attributes>
+          </label>
+          <decorator type="XOR_split">
+            <position>13</position>
+            <attributes>
+              <bounds x="485" y="280" w="12" h="33"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="C_IndividuazioneArea">
+          <vertex>
+            <attributes>
+              <bounds x="644" y="280" w="33" h="32"/>
+              <backgroundColor>-3394561</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="596" y="311" w="131" h="20"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="D_IndividuazioneEventualiProblematiche">
+          <vertex>
+            <attributes>
+              <bounds x="931" y="160" w="33" h="32"/>
+              <backgroundColor>-13421569</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="828" y="190" w="241" h="21"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="B_VerificaSpecifiche">
+          <vertex>
+            <attributes>
+              <bounds x="274" y="280" w="33" h="32"/>
+              <backgroundColor>-3394561</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="227" y="312" w="127" h="20"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="M_Consegna">
+          <vertex>
+            <attributes>
+              <bounds x="1,531" y="277" w="33" h="33"/>
+              <backgroundColor>-3394561</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,497" y="311" w="96" h="20"/>
+            </attributes>
+          </label>
+          <decorator type="XOR_join">
+            <position>12</position>
+            <attributes>
+              <bounds x="1,521" y="277" w="12" h="33"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="b_AssegnazioneRichiestaArea">
+          <vertex>
+            <attributes>
+              <bounds x="795" y="280" w="33" h="32"/>
+              <backgroundColor>-3394561</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="726" y="315" w="180" h="20"/>
+            </attributes>
+          </label>
+          <decorator type="XOR_split">
+            <position>13</position>
+            <attributes>
+              <bounds x="826" y="280" w="12" h="32"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="A_ContattoColRichiedente">
+          <vertex>
+            <attributes>
+              <bounds x="121" y="280" w="33" h="32"/>
+              <backgroundColor>-3394561</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="54" y="311" w="158" h="20"/>
+            </attributes>
+          </label>
+          <decorator type="XOR_join">
+            <position>12</position>
+            <attributes>
+              <bounds x="111" y="280" w="12" h="32"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="I_RisoluzioneProblematicheUnita">
+          <vertex>
+            <attributes>
+              <bounds x="1,147" y="481" w="33" h="33"/>
+              <backgroundColor>-16724941</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,064" y="513" w="196" h="20"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="G_ScritturaCodice">
+          <vertex>
+            <attributes>
+              <bounds x="940" y="384" w="33" h="32"/>
+              <backgroundColor>-16724941</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="901" y="413" w="110" h="20"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="H_TestSingoleUnita">
+          <vertex>
+            <attributes>
+              <bounds x="1,086" y="384" w="33" h="32"/>
+              <backgroundColor>-16724941</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,040" y="413" w="120" h="20"/>
+            </attributes>
+          </label>
+          <decorator type="XOR_join">
+            <position>12</position>
+            <attributes>
+              <bounds x="1,076" y="384" w="12" h="32"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="E_CorrezioneProblematica">
+          <vertex>
+            <attributes>
+              <bounds x="1,152" y="160" w="34" h="32"/>
+              <backgroundColor>-13421569</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,091" y="190" w="158" h="22"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="F_ControlloSoftware">
+          <vertex>
+            <attributes>
+              <bounds x="1,393" y="160" w="33" h="33"/>
+              <backgroundColor>-13421569</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,349" y="190" w="123" h="20"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="L_ControlloGeneraleSoftware">
+          <vertex>
+            <attributes>
+              <bounds x="1,405" y="387" w="33" h="33"/>
+              <backgroundColor>-16724941</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,333" y="418" w="177" h="20"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="c_VerificaEsitoControllo">
+          <vertex>
+            <attributes>
+              <bounds x="1,220" y="386" w="33" h="33"/>
+              <backgroundColor>-16724941</backgroundColor>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,167" y="418" w="145" h="20"/>
+            </attributes>
+          </label>
+          <decorator type="XOR_split">
+            <position>13</position>
+            <attributes>
+              <bounds x="1,251" y="386" w="12" h="33"/>
+            </attributes>
+          </decorator>
+        </container>
+        <flow source="E_CorrezioneProblematica" target="F_ControlloSoftware">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,167.462" y="175.5"/>
+              <value x="1,393.773" y="176.141"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="InputCondition" target="A_ContattoColRichiedente">
+          <ports in="13" out="2"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="35" y="295.5"/>
+              <value x="72" y="295.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="c_VerificaEsitoControllo" target="L_ControlloGeneraleSoftware">
+          <ports in="2" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,261.303" y="401.803"/>
+              <value x="1,405.241" y="402.571"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="b_AssegnazioneRichiestaArea" target="D_IndividuazioneEventualiProblematiche">
+          <ports in="2" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="800.573" y="295.5"/>
+              <value x="931.398" y="159.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="c_VerificaEsitoControllo" target="I_RisoluzioneProblematicheUnita">
+          <ports in="4" out="13"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,256.303" y="417.303"/>
+              <value x="1,178.555" y="497.496"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="b_AssegnazioneRichiestaArea" target="G_ScritturaCodice">
+          <ports in="2" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="800.573" y="295.5"/>
+              <value x="954.344" y="399.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="H_TestSingoleUnita" target="c_VerificaEsitoControllo">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,117.834" y="399.5"/>
+              <value x="1,220.303" y="401.803"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="C_IndividuazioneArea" target="b_AssegnazioneRichiestaArea">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+          </attributes>
+        </flow>
+        <flow source="D_IndividuazioneEventualiProblematiche" target="E_CorrezioneProblematica">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="962.398" y="179.5"/>
+              <value x="1,136.462" y="175.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="F_ControlloSoftware" target="M_Consegna">
+          <ports in="13" out="2"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,424.773" y="160.141"/>
+              <value x="1,533.695" y="284.459"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="L_ControlloGeneraleSoftware" target="M_Consegna">
+          <ports in="13" out="2"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,450.241" y="402.571"/>
+              <value x="1,533.695" y="284.459"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="M_Consegna" target="OutputCondition">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,562.909" y="292.562"/>
+              <value x="1,592.229" y="292.562"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="a_ValutazioneCompletezzaSpecifiche" target="A_ContattoColRichiedente">
+          <ports in="4" out="0"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="506.847" y="311"/>
+              <value x="301" y="436"/>
+              <value x="116.093" y="311"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="B_VerificaSpecifiche" target="a_ValutazioneCompletezzaSpecifiche">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="325.847" y="295.5"/>
+              <value x="470.847" y="295.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="G_ScritturaCodice" target="H_TestSingoleUnita">
+          <ports in="13" out="2"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="971.344" y="399.5"/>
+              <value x="1,076.834" y="399.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="A_ContattoColRichiedente" target="B_VerificaSpecifiche">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="103" y="295.5"/>
+              <value x="294.847" y="295.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="I_RisoluzioneProblematicheUnita" target="H_TestSingoleUnita">
+          <ports in="12" out="0"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,147.555" y="497.496"/>
+              <value x="1,081.834" y="415"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="a_ValutazioneCompletezzaSpecifiche" target="C_IndividuazioneArea">
+          <ports in="2" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="511.847" y="295.5"/>
+              <value x="628.167" y="295.5"/>
+            </points>
+          </attributes>
+        </flow>
+      </net>
+    </specification>
+  </layout>
+</specificationSet>
